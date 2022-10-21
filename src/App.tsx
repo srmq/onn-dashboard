@@ -1,22 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Topbar from './components/topbar/Topbar';
+import { fetchONNData } from './services/w3storage';
 
 function App() {
+
+  fetchONNData().then( onnIndexData => {
+    console.log(onnIndexData);
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Topbar />
     </div>
   );
 }
