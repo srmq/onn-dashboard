@@ -1,25 +1,28 @@
-import * as React from 'react';
-import "./topbar.css"
+import React from 'react';
+import "./topbar.css";
 import LanguageIcon from '@mui/icons-material/Language';
+import OnnData from '../../util/onnData';
 
-export interface ITopbarProps {
+interface TopbarProps {
+    onnData: OnnData;
 }
 
-export default class Topbar extends React.Component<ITopbarProps> {
-  public render() {
+const Topbar: React.FC<TopbarProps> = ({ onnData }) => {
     return (
-      <div className='topbar'>
-        <div className="topbarWrapper">
-            <div className="topLeft">
-                <span className="logo">ONN Dashboard</span>
-            </div>
-            <div className="topRight">
-                <div className="topbarIcons">
-                    <LanguageIcon />
+        <div className='topbar'>
+            <div className="topbarWrapper">
+                <div className="topLeft">
+                    <span className="logo">ONN Dashboard</span>
+                    {onnData.etf?.etfInfo[0].file}
+                </div>
+                <div className="topRight">
+                    <div className="topbarIcons">
+                        <LanguageIcon />
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
     );
-  }
 }
+
+export default Topbar
